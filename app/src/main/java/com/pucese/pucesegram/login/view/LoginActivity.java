@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.pucese.pucesegram.*;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.presenter.LoginPresenterImpl;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private TextView register;
     private ProgressBar progressBarLogin;
     private LoginPresenter presenter;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         register= findViewById(R.id.createHere);
         progressBarLogin= findViewById((R.id.progressbarLogin));
         hideProgressBar();
+
         presenter = new LoginPresenterImpl(this);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.singIn(username.getText().toString(), password.getText().toString());
+                mAuth = FirebaseAuth.getInstance();
+                presenter.singIn(username.getText().toString(), password.getText().toString(), mAuth);
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
