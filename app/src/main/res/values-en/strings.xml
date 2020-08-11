@@ -9,4 +9,5 @@
     <string name="text_button_createaccount">Join Us</string>
     <string name="toolbar_createaccount">Create Account</string>
     <string name="login_error">"This error occurred: "</string>
+    <string name="user_created">User Created</string>
 </resources>

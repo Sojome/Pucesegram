@@ -11,4 +11,5 @@
     <string name="text_button_createaccount">Únete</string>
     <string name="toolbar_createaccount">Crear Cuenta</string>
     <string name="login_error">"Ocurrió este error: "</string>
+    <string name="user_created">Usuario Creado</string>
 </resources>

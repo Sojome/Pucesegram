@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.pucese.pucesegram.*;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.presenter.LoginPresenterImpl;
+import com.pucese.pucesegram.register.view.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -82,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void Registrarse() {
-        Intent i = new Intent(this,RegisterActivity.class);
+        Intent i = new Intent(this, RegisterActivity.class);
         startActivity(i);
     }
 

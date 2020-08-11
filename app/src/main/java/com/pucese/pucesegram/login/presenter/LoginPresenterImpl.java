@@ -7,37 +7,37 @@ import com.pucese.pucesegram.login.view.LoginView;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
-    private LoginView loginView;
+    private LoginView view;
     private LoginInteractor interactor;
 
-    public LoginPresenterImpl(LoginView loginView) {
-        this.loginView = loginView;
+    public LoginPresenterImpl(LoginView view) {
+        this.view = view;
         interactor = new LoginInteractorImpl(this);
     }
 
     @Override
     public void singIn(String username, String password, FirebaseAuth btnAuth) {
-        loginView.disableInputs();
-        loginView.showProgressBar();
+        view.disableInputs();
+        view.showProgressBar();
         interactor.singIn(username, password, btnAuth);
     }
 
     @Override
     public void loginSucces() {
-        loginView.goHome();
-        loginView.hideProgressBar();
+        view.goHome();
+        view.hideProgressBar();
     }
 
     @Override
     public void loginError(String error) {
-        loginView.enableInputs();
-        loginView.hideProgressBar();
-        loginView.loginError(error);
+        view.enableInputs();
+        view.hideProgressBar();
+        view.loginError(error);
     }
 
     @Override
     public void register() {
-        loginView.Registrarse();
-        loginView.hideProgressBar();
+        view.Registrarse();
+        view.hideProgressBar();
     }
 }
