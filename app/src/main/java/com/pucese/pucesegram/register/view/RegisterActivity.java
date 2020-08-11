@@ -3,6 +3,7 @@ package com.pucese.pucesegram.register.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,13 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pucese.pucesegram.R;
+import com.pucese.pucesegram.login.view.LoginActivity;
+import com.pucese.pucesegram.login.view.LoginView;
 import com.pucese.pucesegram.register.presenter.RegisterPresenter;
 import com.pucese.pucesegram.register.presenter.RegisterPresenterImpl;
 
@@ -29,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     //----- Variables para firebase
     private DatabaseReference mDatabase;
-    private FirebaseFirestore myDB ;
+    private FirebaseFirestore myDB;
     private FirebaseAuth mAuth;
 
     @Override
@@ -68,10 +72,19 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
                         correo.getText().toString(),
                         usuario.getText().toString(),
                         contrasena.getText().toString(),
-                        Confircontrasena.getText().toString()
+                        Confircontrasena.getText().toString(),
+                        mAuth, mDatabase, myDB
+
                 );
             }
         });
+    }
+
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //updateUI(currentUser);
     }
 
     public void showToolbar(String tittle, boolean upButton)
@@ -100,5 +113,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public void registerHecho() {
         Toast.makeText(this,getString(R.string.user_created), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void login() {
+        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(i);
     }
 }

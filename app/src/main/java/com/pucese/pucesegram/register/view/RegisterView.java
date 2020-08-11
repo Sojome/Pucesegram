@@ -7,4 +7,6 @@ public interface RegisterView {
     void registerError(String error);
 
     void registerHecho();
+
+    void login();
 }
