@@ -3,64 +3,135 @@ package com.pucese.pucesegram.view.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.pucese.pucesegram.R;
+import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
+import com.pucese.pucesegram.model.Picture;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class SearchFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    EditText etBuscador;
+    RecyclerView picturesRecycler;
+    PictureAdapterRecyclerView pictureAdapterRecyclerView;
+    ArrayList<Picture> pictures;
 
     public SearchFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View view=inflater.inflate(R.layout.fragment_search,container,false);
+        picturesRecycler=(RecyclerView) view.findViewById(R.id.search_recyclerview_photos);
+
+        etBuscador = view.findViewById(R.id.etBuscador);
+
+        GridLayoutManager linearLayoutManager=new GridLayoutManager(getContext(),2);
+
+        picturesRecycler.setLayoutManager(linearLayoutManager);
+        //---------------En caso que quieran
+        /*int spanCount = 2; // 2 columns
+        int spacing = 16; // 20px
+        boolean includeEdge = false;
+        picturesRecycler.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));*/
+        //---------------
+        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(buidPictures(),R.layout.cardview_picture,getActivity() );
+        picturesRecycler.setAdapter(pictureAdapterRecyclerView);
+
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        etBuscador.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filtrar(s.toString());
+            }
+        });
+    }
+
+    public ArrayList<Picture> buidPictures()
+    {
+        pictures =new ArrayList<>();
+        pictures.add(new Picture("https://i.postimg.cc/yD6kBYGN/cevicheria-lider.jpg",
+                "Cevicheria Lider","12 dias","45","Es una cevicheria",
+                "Oe5h & Óceano Índico, Quito 170148, Ecuador, Piso 2 CASA DE 4 PISOSCOLOR AMAE PICANTERIARILLO CON LETREO D , Pichincha 170148"));
+
+        pictures.add(new Picture("https://i.postimg.cc/WDhzFYTL/cisne.jpg",
+                "Hotel Cisne","20 dias","30","Es un hotel",
+                "Moderno, confortable y familiar las instalaciones del hotel han sido concebidas con la idea de compaginar las " +
+                        "necesidades de los viajes de negocios y turismo con la confortable atención de un servicio esmerado."));
+
+        pictures.add(new Picture("https://i.postimg.cc/wRJstf5T/esmeraldas-playa.jpg",
+                "Playa de Esmeraldas","3 dias","4","Es una playa",
+                "Las playas son sistemas dinámicos de arena, agua, flora y fauna en constante cambio." +
+                        "Como destinos para nadar, surfear, ir con amigos, relajarse y observar hermosos atardeceres, " +
+                        "nuestras playas ofrecen infinidad de momentos placenteros."));
+
+        pictures.add(new Picture("https://i.postimg.cc/w3hvmm8v/gran-aki.jpg",
+                "Gran Aki","43 dias","54","Es un lugar para comprar",
+                "En 2007 se crea Gran Akí. Gran Akí es parte de la división de la cadena \"Akí\" dirigido al público popular," +
+                        "incorpora a su línea de oferta productos para el hogar," +
+                        "juguetería, vestido, ferretería, electrodomésticos y entretenimiento, en una suerte de tienda departamental."));
+
+        pictures.add(new Picture("https://i.postimg.cc/GTJmwZJY/muisne.jpg",
+                "Playa de muisne","12 dias","13","Es una playa",
+                "Las playas son sistemas dinámicos de arena, agua, flora y fauna en constante cambio." +
+                        "Como destinos para nadar, surfear, ir con amigos, relajarse y observar hermosos atardeceres," +
+                        "nuestras playas ofrecen infinidad de momentos placenteros."));
+
+        pictures.add(new Picture("https://i.postimg.cc/xJmdgkX6/municipio.jpg",
+                "Municipio","71 dias","11","Es un edificio publico",
+                "Nacimos en el corazón del Pueblo Esmeraldeño, haciendo de nuestras ilusiones y esperanzas," +
+                        "la motivación que se necesita para continuar construyendo el próspero presente que Esmeraldas necesita."));
+
+        pictures.add(new Picture("https://i.postimg.cc/Rqntbhr5/pacomiler.png",
+                "PacoMiler","43 dias","76","Es una licorería",
+                "El licor es una bebida alcohólica obtenida por maceración en aguardiente de hierbas o frutos, que a veces son endulzados con sacarosa," +
+                        "azúcar de uva, mosto o miel, con una riqueza en azúcares superior a 100 gramos/litro."));
+
+        pictures.add(new Picture("https://i.postimg.cc/87wfrrvW/terminal.jpg",
+                "Terminal Terrestre de Esmeraldas","35 dias","9","Es un terminal terrestre",
+                "Existen espacios que suelen convertirse en la cara oculta de las urbes a pesar de la importancia que tienen en el diario vivir de sus habitantes."));
+
+        return pictures;
+    }
+
+    public void filtrar(String texto) {
+        ArrayList<Picture> filtrarLista = new ArrayList<>();
+
+        for(Picture usuario : pictures) {
+            if(usuario.getUsername().toLowerCase().contains(texto.toLowerCase())) {
+                filtrarLista.add(usuario);
+            }
+        }
+
+        pictureAdapterRecyclerView.filtrar(filtrarLista);
     }
 }
