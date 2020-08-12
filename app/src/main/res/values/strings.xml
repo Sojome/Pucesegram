@@ -12,4 +12,19 @@
     <string name="toolbar_createaccount">Crear Cuenta</string>
     <string name="login_error">"Ocurrió este error: "</string>
     <string name="user_created">Usuario Creado</string>
+    <string name="tab_search">Buscar</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_profile">Yo</string>
+    <string name="tab_camera">Camara</string>
+    <string name="tab_favorite">Favorito</string>
+    <string name="transitionname_picture">transitionnamepicture</string>
+    <string name="username_card">Aaron Jaramillo</string>
+    <string name="firstword_card">Hace</string>
+    <string name="timecard_card">x días</string>
+    <string name="likenumbercard_card">#</string>
+    <string name="secondword_detail">Me Gusta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleimagedetail">Información</string>
+    <string name="lorem">Descripción</string>
 </resources>

@@ -10,4 +10,16 @@
     <string name="toolbar_createaccount">Create Account</string>
     <string name="login_error">"This error occurred: "</string>
     <string name="user_created">User Created</string>
+    <string name="tab_search">Search</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_profile">Me</string>
+    <string name="tab_camera">Camera</string>
+    <string name="tab_favorite">Favorite</string>
+    <string name="username_card">Aaron Jaramillo</string>
+    <string name="firstword_card">Since</string>
+    <string name="timecard_card">x days</string>
+    <string name="secondword_detail">Likes</string>
+    <string name="titleimagedetail">Information</string>
+    <string name="lorem">Description</string>
+
 </resources>
