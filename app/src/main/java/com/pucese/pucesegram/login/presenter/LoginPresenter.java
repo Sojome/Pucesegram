@@ -7,4 +7,5 @@ public interface LoginPresenter {
     void loginSucces();
     void loginError(String error);
     void register();
+    void reset();
 }

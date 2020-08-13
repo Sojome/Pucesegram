@@ -27,4 +27,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titleimagedetail">Información</string>
     <string name="lorem">Descripción</string>
+    <string name="Reset_Password">Restablecer contraseña</string>
+    <string name="reset_finish">Se ha enviado el enlace a su correo</string>
+    <string name="Forgot_Password">¿Has olvidado tu contraseña?</string>
+    <string name="text_button_reset">Restablecer</string>
 </resources>

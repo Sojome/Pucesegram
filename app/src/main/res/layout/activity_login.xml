@@ -102,6 +102,19 @@
                         android:textStyle="bold"
                         android:onClick="Registrarse"
                         tools:ignore="OnClick" />
+
+                    <TextView
+                        android:id="@+id/Resetpass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="25dp"
+                        android:gravity="center"
+                        android:text="@string/Forgot_Password"
+                        android:textColor="@color/editTextColorWhite"
+                        android:textSize="@dimen/textsize_donthaveaccount"
+                        android:textStyle="bold" />
+
                     <ProgressBar
                         android:id="@+id/progressbarLogin"
                         android:theme="@style/EditTextWhite"
@@ -110,7 +123,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_marginTop="35dp"
+                        android:layout_marginTop="55dp"
                         android:indeterminate="false"
                         android:max="100"
                         android:minHeight="50dp"

@@ -16,6 +16,7 @@ import com.pucese.pucesegram.*;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.presenter.LoginPresenterImpl;
 import com.pucese.pucesegram.register.view.RegisterActivity;
+import com.pucese.pucesegram.reset.view.ResetPasswordActivity;
 import com.pucese.pucesegram.view.container.view.ContainerActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     //Variables globales
     private TextInputEditText username, password;
     private Button login;
-    private TextView register;
+    private TextView register, reset;
     private ProgressBar progressBarLogin;
     private LoginPresenter presenter;
     private FirebaseAuth mAuth;
@@ -32,10 +33,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        username= findViewById(R.id.username);
-        password= findViewById(R.id.password);
-        login= findViewById(R.id.login);
-        register= findViewById(R.id.createHere);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+        register = findViewById(R.id.createHere);
+        reset = findViewById(R.id.Resetpass);
         progressBarLogin= findViewById((R.id.progressbarLogin));
         hideProgressBar();
 
@@ -51,6 +53,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             @Override
             public void onClick(View v) {
                 presenter.register();
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.reset();
             }
         });
     }
@@ -93,5 +101,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Intent i = new Intent(this, ContainerActivity.class);
         startActivity(i);
         finish();
+    }
+
+    @Override
+    public void goReset() {
+        Intent i = new Intent(this, ResetPasswordActivity.class);
+        startActivity(i);
     }
 }

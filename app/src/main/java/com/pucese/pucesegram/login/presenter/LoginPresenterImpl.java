@@ -40,4 +40,10 @@ public class LoginPresenterImpl implements LoginPresenter {
         view.Registrarse();
         view.hideProgressBar();
     }
+
+    @Override
+    public void reset() {
+        view.goReset();
+        view.hideProgressBar();
+    }
 }
