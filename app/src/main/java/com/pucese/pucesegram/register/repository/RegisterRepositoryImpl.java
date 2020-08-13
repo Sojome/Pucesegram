@@ -95,7 +95,7 @@ public class RegisterRepositoryImpl implements RegisterRepository {
                                 });
                             } else {
                                 // If sign in fails, display a message to the user.
-                                presenter.registerError("Authentication failed.");
+                                presenter.registerError("Autenticación fallida");
                                 //updateUI(null);
                             }
                         }

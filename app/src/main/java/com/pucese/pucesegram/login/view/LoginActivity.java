@@ -16,7 +16,7 @@ import com.pucese.pucesegram.*;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.presenter.LoginPresenterImpl;
 import com.pucese.pucesegram.register.view.RegisterActivity;
-import com.pucese.pucesegram.view.ContainerActivity;
+import com.pucese.pucesegram.view.container.view.ContainerActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void hideProgressBar() {
-        progressBarLogin.setVisibility(View.INVISIBLE);
+        progressBarLogin.setVisibility(View.GONE);
     }
 
     @Override

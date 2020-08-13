@@ -13,7 +13,7 @@
         <activity
             android:name=".register.view.RegisterActivity"
             android:parentActivityName=".login.view.LoginActivity" />
-        <activity android:name=".view.ContainerActivity" />
+        <activity android:name=".view.container.view.ContainerActivity" />
         <activity android:name=".login.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
