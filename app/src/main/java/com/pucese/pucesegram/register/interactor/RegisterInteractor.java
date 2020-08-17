@@ -1,4 +1,4 @@
-package com.pucese.pucesegram.register.interactors;
+package com.pucese.pucesegram.register.interactor;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

@@ -1,8 +1,8 @@
 package com.pucese.pucesegram.login.presenter;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.pucese.pucesegram.login.interactors.LoginInteractor;
-import com.pucese.pucesegram.login.interactors.LoginInteractorImpl;
+import com.pucese.pucesegram.login.interactor.LoginInteractor;
+import com.pucese.pucesegram.login.interactor.LoginInteractorImpl;
 import com.pucese.pucesegram.login.view.LoginView;
 
 public class LoginPresenterImpl implements LoginPresenter {

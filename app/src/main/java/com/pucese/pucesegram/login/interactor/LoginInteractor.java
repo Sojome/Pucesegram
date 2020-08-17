@@ -1,4 +1,4 @@
-package com.pucese.pucesegram.login.interactors;
+package com.pucese.pucesegram.login.interactor;
 
 import com.google.firebase.auth.FirebaseAuth;
 

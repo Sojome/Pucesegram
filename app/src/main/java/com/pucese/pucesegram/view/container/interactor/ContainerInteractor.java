@@ -1,10 +1,9 @@
-package com.pucese.pucesegram.view.container.presenter;
+package com.pucese.pucesegram.view.container.interactor;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public interface ContainerPresenter {
+public interface ContainerInteractor {
     void logout();
-    void logoutsuccess();
     void showSelectedFragment(Fragment fragment, FragmentManager fm);
 }

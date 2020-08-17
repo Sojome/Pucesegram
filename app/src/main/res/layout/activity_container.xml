@@ -12,7 +12,7 @@
     <include layout="@layout/bottom_navigation"></include>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/boton_salir"
         android:layout_width="71dp"
         android:layout_height="34dp"
         android:layout_alignParentTop="true"

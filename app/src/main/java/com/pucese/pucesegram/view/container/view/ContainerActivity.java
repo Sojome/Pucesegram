@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pucese.pucesegram.R;
 import com.pucese.pucesegram.login.view.LoginActivity;
 import com.pucese.pucesegram.view.container.presenter.ContainerPresenter;
+import com.pucese.pucesegram.view.container.presenter.ContainerPresenterImpl;
 import com.pucese.pucesegram.view.fragment.home.view.HomeFragment;
 import com.pucese.pucesegram.view.fragment.profile.view.ProfileFragment;
 import com.pucese.pucesegram.view.fragment.search.view.SearchFragment;
@@ -26,37 +28,50 @@ public class ContainerActivity extends AppCompatActivity implements ContainerVie
 
     //Barra de navegacion
     BottomNavigationView mbottomNavigation;
+    private Button salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
+        presenter = new ContainerPresenterImpl(this);
+
+        salir = findViewById(R.id.boton_salir);
+
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.logout();
+            }
+        });
+
         mbottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
         //Para seleccionar home por defecto
-        mbottomNavigation.getMenu().findItem(R.id.thome).setChecked(true); showSelectedFragment(new HomeFragment());
+        mbottomNavigation.getMenu().findItem(R.id.thome).setChecked(true); //showSelectedFragment(new HomeFragment());
+        presenter.showSelectedFragment(new HomeFragment(), getSupportFragmentManager());
 
         mbottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 if(menuItem.getItemId() == R.id.thome) {
-                    showSelectedFragment(new HomeFragment());
+                    presenter.showSelectedFragment(new HomeFragment(), getSupportFragmentManager());
                 }
 
                 if(menuItem.getItemId() == R.id.tprofile) {
-                    showSelectedFragment(new ProfileFragment());
+                    presenter.showSelectedFragment(new ProfileFragment(), getSupportFragmentManager());
                 }
 
                 if(menuItem.getItemId() == R.id.tsearch) {
-                    showSelectedFragment(new SearchFragment());
+                    presenter.showSelectedFragment(new SearchFragment(), getSupportFragmentManager());
                 }
 
                 if(menuItem.getItemId() == R.id.tcamera) {
-                    showSelectedFragment(new ProfileFragment());
+                    presenter.showSelectedFragment(new ProfileFragment(), getSupportFragmentManager());
                 }
 
                 if(menuItem.getItemId() == R.id.tfavorite) {
-                    showSelectedFragment(new SearchFragment());
+                    presenter.showSelectedFragment(new SearchFragment(), getSupportFragmentManager());
                 }
 
                 return true;
@@ -64,30 +79,10 @@ public class ContainerActivity extends AppCompatActivity implements ContainerVie
         });
     }
 
-    private void showSelectedFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .commit();
-    }
-
-    public void logout(final View view) {
-        FirebaseAuth.getInstance().signOut();
+    @Override
+    public void logout() {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
         finish();
-        /*GoogleSignIn.getClient(this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .build()).signOut().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                startActivity(new Intent(view.getContext(), LoginActivity.class));
-                Toast.makeText(ContainerActivity.this, "Finalizó sesión", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ContainerActivity.this, "Ha fallado el cierre de sesión", Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
-
 }

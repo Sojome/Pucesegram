@@ -3,8 +3,8 @@ package com.pucese.pucesegram.register.presenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.pucese.pucesegram.register.interactors.RegisterInteractor;
-import com.pucese.pucesegram.register.interactors.RegisterInteractorImpl;
+import com.pucese.pucesegram.register.interactor.RegisterInteractor;
+import com.pucese.pucesegram.register.interactor.RegisterInteractorImpl;
 import com.pucese.pucesegram.register.view.RegisterView;
 
 public class RegisterPresenterImpl implements RegisterPresenter {

@@ -1,8 +1,8 @@
 package com.pucese.pucesegram.reset.presenter;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.pucese.pucesegram.reset.interactors.ResetPasswordInteractor;
-import com.pucese.pucesegram.reset.interactors.ResetPasswordInteractorImpl;
+import com.pucese.pucesegram.reset.interactor.ResetPasswordInteractor;
+import com.pucese.pucesegram.reset.interactor.ResetPasswordInteractorImpl;
 import com.pucese.pucesegram.reset.view.ResetPasswordView;
 
 public class ResetPresenterImpl implements ResetPresenter {
