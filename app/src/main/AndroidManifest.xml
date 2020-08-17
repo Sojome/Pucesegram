@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".reset.view.ResetPasswordActivity"
             android:parentActivityName=".login.view.LoginActivity"></activity>
-        <activity android:name=".view.PictureDetailActivity" />
+        <activity android:name=".view.picturedetail.view.PictureDetailActivity" />
         <activity
             android:name=".register.view.RegisterActivity"
             android:parentActivityName=".login.view.LoginActivity" />

@@ -1,9 +1,9 @@
-package com.pucese.pucesegram.view.fragment.home.presenter;
+package com.pucese.pucesegram.view.fragment.profile.interactor;
 
 import com.pucese.pucesegram.model.Picture;
 
 import java.util.ArrayList;
 
-public interface HomePresenter {
+public interface ProfileInteractor {
     ArrayList<Picture> buidPictures(ArrayList<Picture> pictures);
 }

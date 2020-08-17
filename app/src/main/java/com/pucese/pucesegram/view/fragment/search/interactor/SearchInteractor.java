@@ -1,11 +1,11 @@
-package com.pucese.pucesegram.view.fragment.search.presenter;
+package com.pucese.pucesegram.view.fragment.search.interactor;
 
 import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
 import com.pucese.pucesegram.model.Picture;
 
 import java.util.ArrayList;
 
-public interface SearchPresenter {
+public interface SearchInteractor {
     void filtrar(
             String texto,
             PictureAdapterRecyclerView pictureAdapterRecyclerView,

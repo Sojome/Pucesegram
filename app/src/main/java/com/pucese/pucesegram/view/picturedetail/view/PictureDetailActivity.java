@@ -1,4 +1,4 @@
-package com.pucese.pucesegram.view;
+package com.pucese.pucesegram.view.picturedetail.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
