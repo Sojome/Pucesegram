@@ -13,47 +13,48 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.pucese.pucesegram.R;
+import com.pucese.pucesegram.view.picturedetail.presenter.PictureDetailPresenter;
+import com.pucese.pucesegram.view.picturedetail.presenter.PictureDetailPresenterImpl;
 import com.squareup.picasso.Picasso;
 
-public class PictureDetailActivity extends AppCompatActivity
+public class PictureDetailActivity extends AppCompatActivity implements PictureDetailView
 {
+    private ImageView imageHeader;
+    private TextView nombreT;
+    private TextView likeNumberDetail;
+    private TextView tituloT;
+    private TextView textContentImageDetail;
+    private PictureDetailPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_detail);
         showToolbar(" ",true);
+
+
+
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP)
         {
             getWindow().setEnterTransition(new Fade());
         }
 
+        imageHeader= findViewById(R.id.imageHeader);
+        nombreT = findViewById(R.id.userNameDetail);
+        likeNumberDetail = findViewById(R.id.likeNumberDetail);
+        tituloT = findViewById(R.id.titleImage);
+        textContentImageDetail = findViewById(R.id.textContentImageDetail);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         Intent i = getIntent();
 
-        ImageView imageHeader=(ImageView) findViewById(R.id.imageHeader);
-        String url=i.getStringExtra("picture");
-        Picasso.get().load(url).into(imageHeader);
+        presenter = new PictureDetailPresenterImpl(this);
 
-        //nombre
-        TextView nombreT = (TextView) findViewById(R.id.userNameDetail);
-        String name = i.getStringExtra("name");
-        nombreT.setText(name);
-
-        //Like
-        TextView likeNumberDetail = (TextView) findViewById(R.id.likeNumberDetail);
-        String like = i.getStringExtra("like");
-        likeNumberDetail.setText(like);
-
-        //Titulo
-        TextView tituloT = (TextView) findViewById(R.id.titleImage);
-        String title = i.getStringExtra("titulo");
-        tituloT.setText(title);
-
-        //Descripción
-        TextView textContentImageDetail = (TextView) findViewById(R.id.textContentImageDetail);
-        String comentarios = i.getStringExtra("description");
-        textContentImageDetail.setText(comentarios);
-
+        presenter.setInformation(i);
     }
 
     public void showToolbar(String tittle, boolean upButton)
@@ -73,4 +74,28 @@ public class PictureDetailActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    public void setImage(String txt) {
+        Picasso.get().load(txt).into(imageHeader);
+    }
+
+    @Override
+    public void setNombre(String txt) {
+        nombreT.setText(txt);
+    }
+
+    @Override
+    public void setLikeNumber(String txt) {
+        likeNumberDetail.setText(txt);
+    }
+
+    @Override
+    public void setTitulo(String txt) {
+        tituloT.setText(txt);
+    }
+
+    @Override
+    public void setDetail(String txt) {
+        textContentImageDetail.setText(txt);
+    }
 }
