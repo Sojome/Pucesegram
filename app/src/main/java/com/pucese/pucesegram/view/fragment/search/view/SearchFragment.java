@@ -73,7 +73,7 @@ public class SearchFragment extends Fragment implements SearchView {
 
             @Override
             public void afterTextChanged(Editable s) {
-                presenter.filtrar(s.toString(),pictureAdapterRecyclerView, pictures);
+                presenter.filtrar(s.toString(),pictureAdapterRecyclerView, presenter.buidPictures(pictures));
             }
         });
     }
