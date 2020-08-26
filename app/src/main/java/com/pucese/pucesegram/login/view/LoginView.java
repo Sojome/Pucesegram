@@ -12,4 +12,6 @@ public interface LoginView {
     void Registrarse();
     void goHome();
     void goReset();
+
+    void goAdmin();
 }

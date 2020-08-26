@@ -1,6 +1,7 @@
 package com.pucese.pucesegram.login.interactor;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.repository.LoginRepository;
 import com.pucese.pucesegram.login.repository.LoginRepositoryImpl;
@@ -16,8 +17,8 @@ public class LoginInteractorImpl implements LoginInteractor {
     }
 
     @Override
-    public void singIn(String username, String password, FirebaseAuth btnAuth) {
-        repository.singIn(username, password, btnAuth);
+    public void singIn(String username, String password, FirebaseAuth btnAuth, DatabaseReference reference) {
+        repository.singIn(username, password, btnAuth, reference);
     }
 
 }

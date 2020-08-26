@@ -1,9 +1,11 @@
 package com.pucese.pucesegram.login.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -12,12 +14,20 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.pucese.pucesegram.*;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.presenter.LoginPresenterImpl;
+import com.pucese.pucesegram.model.User;
 import com.pucese.pucesegram.register.view.RegisterActivity;
 import com.pucese.pucesegram.reset.view.ResetPasswordActivity;
-import com.pucese.pucesegram.view.container.view.ContainerActivity;
+import com.pucese.pucesegram.container.view.ContainerActivity;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -28,6 +38,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private ProgressBar progressBarLogin;
     private LoginPresenter presenter;
     private FirebaseAuth mAuth;
+
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +53,53 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         progressBarLogin= findViewById((R.id.progressbarLogin));
         hideProgressBar();
 
+        reference = FirebaseDatabase.getInstance().getReference();
+
+        /*reference.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(final DataSnapshot snapshot : dataSnapshot.getChildren()){
+
+                    reference.child("Users").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            User listado = snapshot.getValue(User.class);
+
+                            Boolean admin = listado.isAdmin();
+                            String correo = listado.getCorreo();
+                            String nombre = listado.getNombre();
+                            String usuario = listado.getUsuario();
+
+                            if(usuario.equals("aaron")) {
+                                Log.e("usuario", ""+usuario);
+                                Log.e("correo", ""+correo);
+                                Log.e("nombre", ""+nombre);
+                                Log.e("boolean", ""+admin);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        */
+
         presenter = new LoginPresenterImpl(this);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth = FirebaseAuth.getInstance();
-                presenter.singIn(username.getText().toString(), password.getText().toString(), mAuth);
+                presenter.singIn(username.getText().toString(), password.getText().toString(), mAuth, reference);
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -107,5 +160,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void goReset() {
         Intent i = new Intent(this, ResetPasswordActivity.class);
         startActivity(i);
+    }
+
+    @Override
+    public void goAdmin() {
+        Intent i = new Intent(this, AddInfoActivity.class);
+        startActivity(i);
+        finish();
     }
 }

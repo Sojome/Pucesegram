@@ -1,6 +1,7 @@
 package com.pucese.pucesegram.login.presenter;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.pucese.pucesegram.login.interactor.LoginInteractor;
 import com.pucese.pucesegram.login.interactor.LoginInteractorImpl;
 import com.pucese.pucesegram.login.view.LoginView;
@@ -16,10 +17,10 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
-    public void singIn(String username, String password, FirebaseAuth btnAuth) {
+    public void singIn(String username, String password, FirebaseAuth btnAuth, DatabaseReference reference) {
         view.disableInputs();
         view.showProgressBar();
-        interactor.singIn(username, password, btnAuth);
+        interactor.singIn(username, password, btnAuth, reference);
     }
 
     @Override
@@ -44,6 +45,12 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void reset() {
         view.goReset();
+        view.hideProgressBar();
+    }
+
+    @Override
+    public void adminSucces() {
+        view.goAdmin();
         view.hideProgressBar();
     }
 }

@@ -68,6 +68,7 @@ public class RegisterRepositoryImpl implements RegisterRepository {
                                 result.put("correo", correo);
                                 result.put("usuario", usuario);
                                 result.put("nombre", nombre);
+                                result.put("admin", false);
 
                                 mDatabase.child("Users").child(id).setValue(result).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -79,6 +80,7 @@ public class RegisterRepositoryImpl implements RegisterRepository {
                                             data1.put("correo", correo);
                                             data1.put("usuario", usuario);
                                             data1.put("nombre", nombre);
+                                            data1.put("admin", false);
                                             Users.document("SF" + btnAuth.getCurrentUser().getUid()).set(data1);
 
                                             // Sign in success, update UI with the signed-in user's information

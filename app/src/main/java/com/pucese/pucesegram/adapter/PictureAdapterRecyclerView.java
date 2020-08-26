@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pucese.pucesegram.R;
 import com.pucese.pucesegram.model.Picture;
-import com.pucese.pucesegram.view.picturedetail.view.PictureDetailActivity;
+import com.pucese.pucesegram.picturedetail.view.PictureDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".reset.view.ResetPasswordActivity"
-            android:parentActivityName=".login.view.LoginActivity"></activity>
-        <activity android:name=".view.picturedetail.view.PictureDetailActivity" />
+        <activity android:name=".AddInfoActivity"></activity>
+        <activity
+            android:name=".reset.view.ResetPasswordActivity"
+            android:parentActivityName=".login.view.LoginActivity" />
+        <activity android:name=".picturedetail.view.PictureDetailActivity" />
         <activity
             android:name=".register.view.RegisterActivity"
             android:parentActivityName=".login.view.LoginActivity" />
-        <activity android:name=".view.container.view.ContainerActivity" />
+        <activity android:name=".container.view.ContainerActivity" />
         <activity android:name=".login.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
