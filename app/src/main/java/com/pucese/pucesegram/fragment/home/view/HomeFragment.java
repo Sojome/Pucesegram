@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pucese.pucesegram.R;
 import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
 import com.pucese.pucesegram.model.Picture;
@@ -25,6 +27,8 @@ public class HomeFragment extends Fragment implements HomeView {
     RecyclerView picturesRecycler;
     PictureAdapterRecyclerView pictureAdapterRecyclerView;
     LinearLayoutManager linearLayoutManager;
+
+    private DatabaseReference reference;
 
     private HomePresenter presenter;
 
@@ -42,12 +46,14 @@ public class HomeFragment extends Fragment implements HomeView {
 
         presenter = new HomePresenterImpl(this);
 
+        reference = FirebaseDatabase.getInstance().getReference();
+
         picturesRecycler=(RecyclerView) view.findViewById(R.id.pictureRecycler);
         linearLayoutManager=new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         picturesRecycler.setLayoutManager(linearLayoutManager);
-        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(),R.layout.cardview_picture,getActivity() );
+        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(reference),R.layout.cardview_picture,getActivity() );
         picturesRecycler.setAdapter(pictureAdapterRecyclerView);
 
         return view;

@@ -24,7 +24,6 @@
         android:background="@android:color/transparent"
         android:drawableTop="@drawable/exit_to_app"
         android:gravity="center"
-        android:onClick="logout"
         android:textColor="@color/editTextColorWhite" />
 
 

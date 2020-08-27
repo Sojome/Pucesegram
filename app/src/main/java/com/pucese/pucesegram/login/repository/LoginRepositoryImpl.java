@@ -33,20 +33,9 @@ public class LoginRepositoryImpl implements LoginRepository {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        //Log.e("Datos: ", ""+snapshot.getValue());
                         User listado = snapshot.getValue(User.class);
 
                         final Boolean admin = listado.isAdmin();
-                        String correo = listado.getCorreo();
-                        String nombre = listado.getNombre();
-                        String usuario = listado.getUsuario();
-                        /*
-                        Log.e("usuario", ""+usuario);
-                        Log.e("correo", ""+correo);
-                        Log.e("nombre", ""+nombre);
-                        Log.e("boolean", ""+admin);
-                        
-                         */
 
                         btnAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override

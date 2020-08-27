@@ -1,9 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddInfoActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".addinfo.view.AddInfoActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/boton_cerrar"
+            android:layout_width="71dp"
+            android:layout_height="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/cerrar_admin"
+            android:gravity="center" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_marginTop="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_vertival_margin"
+            android:orientation="vertical"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/plugar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese lugar"
+                    android:inputType="text"
+                    android:textColor="@color/editTextColorBlack"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ptime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese el tiempo"
+                    android:inputType="number"
+                    android:textColor="@color/editTextColorBlack"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/plike_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese el numero de likes"
+                    android:inputType="number"
+                    android:textColor="@color/editTextColorBlack"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ptitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="titulo de la descripcion"
+                    android:inputType="text"
+                    android:textColor="@color/editTextColorBlack"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pdescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Descipcion"
+                    android:inputType="text"
+                    android:textColor="@color/editTextColorBlack"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/Agregar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Añadir lugar"
+                android:theme="@style/RaisedButtonDark"
+                />
+
+            <ProgressBar
+                android:id="@+id/progressbarAgregar"
+                android:theme="@style/EditTextBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="25dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:minHeight="50dp"
+                android:minWidth="200dp"
+                />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

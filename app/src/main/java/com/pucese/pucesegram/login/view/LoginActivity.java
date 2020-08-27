@@ -1,11 +1,9 @@
 package com.pucese.pucesegram.login.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -14,20 +12,15 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.pucese.pucesegram.*;
+import com.pucese.pucesegram.addinfo.view.AddInfoActivity;
 import com.pucese.pucesegram.login.presenter.LoginPresenter;
 import com.pucese.pucesegram.login.presenter.LoginPresenterImpl;
-import com.pucese.pucesegram.model.User;
 import com.pucese.pucesegram.register.view.RegisterActivity;
 import com.pucese.pucesegram.reset.view.ResetPasswordActivity;
 import com.pucese.pucesegram.container.view.ContainerActivity;
-
-import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 

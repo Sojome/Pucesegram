@@ -1,5 +1,6 @@
 package com.pucese.pucesegram.fragment.home.interactor;
 
+import com.google.firebase.database.DatabaseReference;
 import com.pucese.pucesegram.model.AddData;
 import com.pucese.pucesegram.model.Picture;
 import com.pucese.pucesegram.fragment.home.presenter.HomePresenter;
@@ -15,8 +16,8 @@ public class HomeInteractorImpl implements HomeInteractor {
     }
 
     @Override
-    public ArrayList<Picture> buidPictures() {
-        AddData data = new AddData();
+    public ArrayList<Picture> buidPictures(DatabaseReference reference) {
+        AddData data = new AddData(reference);
         return data.buidPictures();
     }
 }

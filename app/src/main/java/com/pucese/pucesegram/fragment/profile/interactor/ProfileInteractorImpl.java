@@ -16,7 +16,8 @@ public class ProfileInteractorImpl implements ProfileInteractor {
 
     @Override
     public ArrayList<Picture> buidPictures() {
-        AddData data = new AddData();
-        return data.buidPictures();
+        //AddData data = new AddData();
+        //return data.buidPictures();
+        return null;
     }
 }
