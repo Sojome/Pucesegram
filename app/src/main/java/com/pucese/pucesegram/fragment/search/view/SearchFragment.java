@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pucese.pucesegram.R;
 import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
 import com.pucese.pucesegram.model.Picture;
@@ -31,6 +33,8 @@ public class SearchFragment extends Fragment implements SearchView {
 
     private SearchPresenter presenter;
 
+    private DatabaseReference reference;
+
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -43,6 +47,8 @@ public class SearchFragment extends Fragment implements SearchView {
 
         presenter = new SearchPresenterImpl(this);
 
+        reference = FirebaseDatabase.getInstance().getReference();
+
         picturesRecycler=(RecyclerView) view.findViewById(R.id.search_recyclerview_photos);
 
         etBuscador = view.findViewById(R.id.etBuscador);
@@ -50,9 +56,8 @@ public class SearchFragment extends Fragment implements SearchView {
         linearLayoutManager=new GridLayoutManager(getContext(),2);
 
         picturesRecycler.setLayoutManager(linearLayoutManager);
-        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(),R.layout.cardview_picture,getActivity() );
+        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(reference),R.layout.cardview_picture,getActivity() );
         picturesRecycler.setAdapter(pictureAdapterRecyclerView);
-
 
         return view;
     }
@@ -73,7 +78,7 @@ public class SearchFragment extends Fragment implements SearchView {
 
             @Override
             public void afterTextChanged(Editable s) {
-                presenter.filtrar(s.toString(),pictureAdapterRecyclerView, presenter.buidPictures());
+                presenter.filtrar(s.toString(),pictureAdapterRecyclerView, presenter.buidPictures(reference));
             }
         });
     }

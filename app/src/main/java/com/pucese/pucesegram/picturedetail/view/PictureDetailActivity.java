@@ -68,7 +68,6 @@ public class PictureDetailActivity extends AppCompatActivity implements PictureD
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });

@@ -75,18 +75,20 @@ public class AddData {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            Important p = snapshot.getValue(Important.class);
+                            if(snapshot != null) {
+                                Important p = snapshot.getValue(Important.class);
 
-                            String description = p.getDescription();
-                            int likes = p.getLikes();
-                            String place = p.getPlace();
-                            int time = p.getTime();
-                            String title = p.getTitle();
+                                String description = p.getDescription();
+                                int likes = p.getLikes();
+                                String place = p.getPlace();
+                                int time = p.getTime();
+                                String title = p.getTitle();
 
-                            pictures.add(new Picture("https://i.postimg.cc/yD6kBYGN/cevicheria-lider.jpg",
-                                    place, Integer.toString(time), Integer.toString(likes), title, description));
+                                pictures.add(new Picture("https://i.postimg.cc/yD6kBYGN/cevicheria-lider.jpg",
+                                        place, Integer.toString(time), Integer.toString(likes), title, description));
 
-
+                                //Log.e("Hay info", place);
+                            }
                         }
 
                         @Override
@@ -107,6 +109,8 @@ public class AddData {
                 "Hotel Cisne","20 dias","30","Es un hotel",
                 "Moderno, confortable y familiar las instalaciones del hotel han sido concebidas con la idea de compaginar las " +
                         "necesidades de los viajes de negocios y turismo con la confortable atención de un servicio esmerado."));
+
+
 
         return pictures;
     }

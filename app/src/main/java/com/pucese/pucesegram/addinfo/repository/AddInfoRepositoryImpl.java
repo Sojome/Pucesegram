@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
 import com.pucese.pucesegram.addinfo.presenter.AddInfoPresenter;
 
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class AddInfoRepositoryImpl implements AddInfoRepository {
     }
 
     @Override
-    public void agregarLugares(String lugar, int tiempo, int likes, String titulo, String descripcion, DatabaseReference reference) {
+    public void agregarLugares(String lugar, int tiempo, int likes, String titulo, String descripcion, DatabaseReference reference, StorageReference storageReference) {
         try {
             if(!lugar.isEmpty() && !titulo.isEmpty() && !descripcion.isEmpty() && tiempo >=0 && likes >=0) {
                 Map<String, Object> dPlaces = new HashMap<>();
@@ -35,6 +36,7 @@ public class AddInfoRepositoryImpl implements AddInfoRepository {
                 dPlaces.put("description", descripcion);
 
                 reference.child("Places").push().setValue(dPlaces);
+                //storageReference.child("Places");
 
                 presenter.agregarSuccess();
             } else {

@@ -56,6 +56,8 @@ public class HomeFragment extends Fragment implements HomeView {
         pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(reference),R.layout.cardview_picture,getActivity() );
         picturesRecycler.setAdapter(pictureAdapterRecyclerView);
 
+        pictureAdapterRecyclerView.notifyDataSetChanged();
+
         return view;
 
     }

@@ -1,6 +1,9 @@
 package com.pucese.pucesegram.addinfo.presenter;
 
+import android.net.Uri;
+
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.StorageReference;
 
 public interface AddInfoPresenter {
     void agregarLugares(
@@ -9,7 +12,8 @@ public interface AddInfoPresenter {
             int likes,
             String titulo,
             String descripcion,
-            DatabaseReference reference
+            DatabaseReference reference,
+            StorageReference storageReference
     );
     void agregarSuccess();
     void agregarError(String error);

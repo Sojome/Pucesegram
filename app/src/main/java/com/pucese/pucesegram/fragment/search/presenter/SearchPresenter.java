@@ -1,5 +1,6 @@
 package com.pucese.pucesegram.fragment.search.presenter;
 
+import com.google.firebase.database.DatabaseReference;
 import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
 import com.pucese.pucesegram.model.Picture;
 
@@ -12,5 +13,5 @@ public interface SearchPresenter {
             ArrayList<Picture> pictures
     );
 
-    ArrayList<Picture> buidPictures();
+    ArrayList<Picture> buidPictures(DatabaseReference reference);
 }

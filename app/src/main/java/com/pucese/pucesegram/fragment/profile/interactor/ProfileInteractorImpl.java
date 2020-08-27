@@ -1,5 +1,6 @@
 package com.pucese.pucesegram.fragment.profile.interactor;
 
+import com.google.firebase.database.DatabaseReference;
 import com.pucese.pucesegram.model.AddData;
 import com.pucese.pucesegram.model.Picture;
 import com.pucese.pucesegram.fragment.profile.presenter.ProfilePresenter;
@@ -14,10 +15,10 @@ public class ProfileInteractorImpl implements ProfileInteractor {
         this.presenter = presenter;
     }
 
+
     @Override
-    public ArrayList<Picture> buidPictures() {
-        //AddData data = new AddData();
-        //return data.buidPictures();
-        return null;
+    public ArrayList<Picture> buidPictures(DatabaseReference reference) {
+        AddData data = new AddData(reference);
+        return data.buidPictures();
     }
 }

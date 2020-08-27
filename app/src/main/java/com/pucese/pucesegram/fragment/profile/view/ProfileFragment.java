@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pucese.pucesegram.R;
 import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
 import com.pucese.pucesegram.model.Picture;
@@ -28,6 +30,8 @@ public class ProfileFragment extends Fragment implements ProfileView {
 
     private ProfilePresenter presenter;
 
+    private DatabaseReference reference;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -41,12 +45,14 @@ public class ProfileFragment extends Fragment implements ProfileView {
 
         presenter = new ProfilePresenterImpl(this);
 
+        reference = FirebaseDatabase.getInstance().getReference();
+
         picturesRecycler=(RecyclerView) view.findViewById(R.id.pictureProfileRecycler);
         linearLayoutManager=new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         picturesRecycler.setLayoutManager(linearLayoutManager);
-        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(),R.layout.cardview_picture,getActivity() );
+        pictureAdapterRecyclerView=new PictureAdapterRecyclerView(presenter.buidPictures(reference),R.layout.cardview_picture,getActivity() );
         picturesRecycler.setAdapter(pictureAdapterRecyclerView);
 
         return view;

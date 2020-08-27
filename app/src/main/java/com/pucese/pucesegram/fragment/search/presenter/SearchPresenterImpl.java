@@ -1,5 +1,6 @@
 package com.pucese.pucesegram.fragment.search.presenter;
 
+import com.google.firebase.database.DatabaseReference;
 import com.pucese.pucesegram.adapter.PictureAdapterRecyclerView;
 import com.pucese.pucesegram.model.Picture;
 import com.pucese.pucesegram.fragment.search.interactor.SearchInteractor;
@@ -23,7 +24,7 @@ public class SearchPresenterImpl implements SearchPresenter {
     }
 
     @Override
-    public ArrayList<Picture> buidPictures() {
-        return interactor.buidPictures();
+    public ArrayList<Picture> buidPictures(DatabaseReference reference) {
+        return interactor.buidPictures(reference);
     }
 }
